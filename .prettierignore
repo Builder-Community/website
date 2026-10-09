@@ -1,0 +1,8 @@
+# Wird von npm erzeugt
+package-lock.json
+
+# Wird von `next dev` erzeugt und gepflegt
+AGENTS.md
+
+# Original-Brief bleibt unverändert
+docs/BRIEF.md

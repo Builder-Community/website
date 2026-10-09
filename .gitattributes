@@ -1,0 +1,8 @@
+# Einheitliche Zeilenenden (LF) auf Windows, macOS und in der CI.
+# Ohne diese Datei würde Git unter Windows CRLF auschecken und Prettier sich beschweren.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
