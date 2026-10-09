@@ -1,5 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
+import {
+  Bricolage_Grotesque,
+  Instrument_Sans,
+  Schibsted_Grotesk,
+} from "next/font/google";
 import { colors } from "@/lib/brand";
 import "../globals.css";
 
@@ -24,6 +28,14 @@ const instrumentSans = Instrument_Sans({
   variable: "--font-instrument",
 });
 
+// Nur für den Schriftvergleich in Etappe 2 (nüchterner als Bricolage).
+// preload: false, damit normale Seiten sie nicht vorab laden.
+const schibsted = Schibsted_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-schibsted",
+  preload: false,
+});
+
 export const metadata: Metadata = {
   title: "builder.community",
 };
@@ -42,7 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     // wo Tailwind sie liest (:root). Siehe app/globals.css.
     <html
       lang="de"
-      className={`${bricolage.variable} ${instrumentSans.variable}`}
+      className={`${bricolage.variable} ${instrumentSans.variable} ${schibsted.variable}`}
     >
       <body>{children}</body>
     </html>
