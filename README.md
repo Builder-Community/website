@@ -4,7 +4,8 @@ Website von **Side Project Saturday**, dem wöchentlichen Treffen der Augsburg B
 jeden Samstag von 9 bis 12 Uhr in einem Café in der Augsburger Innenstadt.
 
 Produktion: [augsburg.builder.community](https://augsburg.builder.community) ·
-Anforderungen: [docs/BRIEF.md](docs/BRIEF.md)
+Anforderungen: [docs/BRIEF.md](docs/BRIEF.md) ·
+Entscheidungen und Abweichungen vom Brief: [docs/ENTSCHEIDUNGEN.md](docs/ENTSCHEIDUNGEN.md)
 
 ## Loslegen
 
@@ -12,9 +13,21 @@ Voraussetzung: Node.js 22 (siehe `.nvmrc`).
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
-npm run dev:lan    # im Heimnetz erreichbar: auf dem Handy http://<IP-des-Laptops>:3000
+npm run dev        # http://localhost:3000 – nur auf diesem Rechner erreichbar
+npm run dev:lan    # zusätzlich im WLAN erreichbar: auf dem Handy http://<IP-des-Laptops>:3000
 ```
+
+`dev:lan` nur im eigenen Heimnetz verwenden, nie in öffentlichen WLANs (Café, Zug, BayernWLAN):
+Dort könnten sonst andere den unveröffentlichten Stand sehen. Öffentliche Hotspots trennen die Geräte
+ohnehin voneinander, das Handy erreicht den Laptop dort also gar nicht. Unterwegs zum Testen auf dem
+Handy die Vercel-Vorschau des Pull Requests nehmen.
+
+Vorschau-Seiten (nur lokal und in Vercel-Previews, in Produktion 404):
+
+- `/vorschau/hero`: der Hero der Startseite
+
+Die IP des Laptops steht in PowerShell unter `ipconfig` bei „IPv4-Adresse“ des WLAN-Adapters.
+Beim ersten Start fragt Windows eventuell, ob Node.js im privaten Netzwerk erreichbar sein darf: zulassen.
 
 ## Befehle
 
@@ -32,10 +45,12 @@ npm run dev:lan    # im Heimnetz erreichbar: auf dem Handy http://<IP-des-Laptop
 app/              Seiten und Routen (Next.js App Router)
   (de)/           deutsche Seiten mit eigenem <html lang="de">; „(de)“ steht nicht in der URL
   globals.css     Design-Tokens: Farben, Schriften, Radius, Flächen, Bewegung
-components/       Bausteine der Seite, z. B. BMark (das B)
+components/       Bausteine der Seite: Header, Hero, Buttons, BMark (das B) …
+content/          alle Texte, Termine und Links (nur auf dem Server lesbar)
 lib/              Logik ohne Oberfläche, mit Tests daneben (*.test.ts)
 public/brand/     Logo-Dateien
-docs/             Brief
+design/review/    Screenshots der Design-Entscheidungen
+docs/             Brief und Entscheidungslog
 ```
 
 ## Arbeitsweise
