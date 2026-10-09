@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/*
+ * Design-Tokens
+ * Alles, was die Marke ausmacht, steht an dieser einen Stelle.
+ * Die Werte im @theme-Block werden zu Tailwind-Klassen,
+ * z. B. --color-navy → bg-navy, text-navy, border-navy.
+ */
+@theme {
+  /*
+   * Farben
+   * `--color-*: initial` entfernt Tailwinds Standardpalette. Im Projekt gibt es
+   * nur diese fünf Farben, so schleicht sich kein `bg-gray-100` ein.
+   * lib/brand.ts enthält dieselben Werte für Stellen ohne CSS; ein Test prüft,
+   * dass beide übereinstimmen und die Kontraste reichen.
+   */
+  --color-*: initial;
+  --color-navy: #192a3d; /* Grundfläche: Hero, dunkle Sektionen, Footer */
+  --color-orange: #fc4c02; /* Akzent, sparsam. Auf Navy nur große/fette Schrift */
+  --color-cream: #f1f1d4; /* Text auf Navy, Hintergrund heller Sektionen */
+  --color-ink: #373634; /* Text auf Creme */
+  --color-sky: #cae9ff; /* Links und Fokus auf Navy, Zitat-Sektion */
+
+  /*
+   * Schriften
+   * Die Variablen --font-bricolage und --font-instrument setzt next/font
+   * im Root-Layout auf <html> (= :root). Nur deshalb funktioniert var() hier.
+   */
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+
+  /* Ecken: einheitlich und klein. Es gibt nur diesen einen Radius (rounded-brand). */
+  --radius-*: initial;
+  --radius-brand: 0.625rem; /* 10px */
+
+  /* Breiten (max-w-page, max-w-text) */
+  --container-page: 70rem; /* 1120px: maximale Inhaltsbreite auf dem Desktop */
+  --container-text: 62ch; /* ca. 62 Zeichen pro Zeile im Fließtext */
+
+  /* Signatur-Bewegung: Das B erscheint wie ein Stempel (animate-stamp). */
+  --animate-stamp: stamp 350ms ease-out both;
+
+  @keyframes stamp {
+    from {
+      opacity: 0;
+      transform: scale(1.08);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+/*
+ * Flächen
+ * Jede Sektion wählt eine Fläche. Damit stimmen Hintergrund, Textfarbe und
+ * Fokus-Ring automatisch. Wichtig: Sky auf Creme hat nur 1,1:1 Kontrast,
+ * deshalb ist der Fokus-Ring auf hellen Flächen Navy.
+ */
+@utility surface-navy {
+  background-color: var(--color-navy);
+  color: var(--color-cream);
+  --focus-color: var(--color-sky);
+}
+
+@utility surface-cream {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  --focus-color: var(--color-navy);
+}
+
+@utility surface-sky {
+  background-color: var(--color-sky);
+  color: var(--color-navy);
+  --focus-color: var(--color-navy);
+}
+
+@layer base {
+  html {
+    /* Navy hinter allem: Beim „Gummiband“-Scrollen auf dem iPhone blitzt nichts Weißes auf. */
+    background-color: var(--color-navy);
+    color: var(--color-cream);
+  }
+
+  body {
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-color, var(--color-sky));
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--color-orange);
+    color: var(--color-navy);
+  }
+}
+
+/* Wer reduzierte Bewegung eingestellt hat, bekommt keine Animationen. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
