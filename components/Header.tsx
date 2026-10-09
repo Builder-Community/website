@@ -5,10 +5,8 @@ import { Container } from "./Container";
 type HeaderProps = {
   locale: Locale;
   languageNav: string;
-  // Farbe des kleinen B. Standard ist Orange; neben einem großen B im Hero Creme,
-  // damit pro Bildschirm höchstens zwei orange Momente bleiben.
-  markClassName?: string;
-  // Stempel-Effekt beim Laden. Nur auf der Startseite, wenn kein großes B da ist.
+  // Stempel-Effekt fürs B beim Laden. Laut Brief nur im Teaser und im Hero,
+  // also nur auf der Startseite einschalten.
   stamp?: boolean;
 };
 
@@ -17,22 +15,16 @@ const languages = [
   { locale: "en", href: "/en", label: "EN", name: "English" },
 ] as const;
 
-export function Header({
-  locale,
-  languageNav,
-  markClassName = "text-orange",
-  stamp = false,
-}: HeaderProps) {
+export function Header({ locale, languageNav, stamp = false }: HeaderProps) {
   return (
-    // Liegt über dem Hero (absolute), damit der Hero selbst die volle Bildschirmhöhe hat.
-    <header className="absolute inset-x-0 top-0 z-10 pt-[env(safe-area-inset-top)] text-cream [--focus-color:var(--color-sky)]">
+    <header className="surface-navy pt-[env(safe-area-inset-top)]">
       <Container className="flex h-16 items-center justify-between">
         <a
           href={locale === "de" ? "/" : "/en"}
           className="-ml-1 flex min-h-11 items-center gap-2.5 rounded-brand pr-2 pl-1"
         >
           <BMark
-            className={`h-8 w-auto ${markClassName} ${stamp ? "animate-stamp" : ""}`}
+            className={`h-8 w-auto text-orange ${stamp ? "animate-stamp" : ""}`}
           />
           <span className="font-display text-[1.0625rem] font-bold tracking-[-0.01em]">
             builder.community

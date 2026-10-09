@@ -146,11 +146,6 @@
     background-color: var(--color-orange);
     color: var(--color-navy);
   }
-
-  /* Nur für den Schriftvergleich in Etappe 2. Wird nach der Entscheidung entfernt. */
-  [data-display-font="schibsted"] {
-    --font-display: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
-  }
 }
 
 /* Wer reduzierte Bewegung eingestellt hat, bekommt keine Animationen. */
