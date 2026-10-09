@@ -29,6 +29,25 @@
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
 
+  /*
+   * Schriftgrößen, fließend zwischen Handy (390px) und Desktop (1440px).
+   * Klassen: text-display, text-lead, text-kicker, text-button
+   */
+  --text-display: clamp(
+    2.75rem,
+    1.45rem + 6.1vw,
+    7rem
+  ); /* H1: ca. 47px → 112px */
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.02em;
+  --text-lead: clamp(1.125rem, 1.05rem + 0.35vw, 1.375rem); /* 18px → 22px */
+  --text-lead--line-height: 1.45;
+  --text-kicker: 0.8125rem; /* 13px, in Versalien gesetzt */
+  --text-kicker--line-height: 1.25;
+  --text-kicker--letter-spacing: 0.14em;
+  --text-button: 1.1875rem; /* 19px fett: gilt als große Schrift (Navy auf Orange, 4,3:1) */
+  --text-button--line-height: 1.2;
+
   /* Ecken: einheitlich und klein. Es gibt nur diesen einen Radius (rounded-brand). */
   --radius-*: initial;
   --radius-brand: 0.625rem; /* 10px */
@@ -54,26 +73,43 @@
 
 /*
  * Flächen
- * Jede Sektion wählt eine Fläche. Damit stimmen Hintergrund, Textfarbe und
- * Fokus-Ring automatisch. Wichtig: Sky auf Creme hat nur 1,1:1 Kontrast,
- * deshalb ist der Fokus-Ring auf hellen Flächen Navy.
+ * Jede Sektion wählt eine Fläche. Damit stimmen Hintergrund, Textfarbe,
+ * Linkfarbe und Fokus-Ring automatisch. Wichtig: Sky auf Creme hat nur
+ * 1,1:1 Kontrast, deshalb sind Links und Fokus-Ring auf hellen Flächen Navy.
  */
 @utility surface-navy {
   background-color: var(--color-navy);
   color: var(--color-cream);
+  --link-color: var(--color-sky);
   --focus-color: var(--color-sky);
 }
 
 @utility surface-cream {
   background-color: var(--color-cream);
   color: var(--color-ink);
+  --link-color: var(--color-navy);
   --focus-color: var(--color-navy);
 }
 
 @utility surface-sky {
   background-color: var(--color-sky);
   color: var(--color-navy);
+  --link-color: var(--color-navy);
   --focus-color: var(--color-navy);
+}
+
+/*
+ * Seitenränder: 20px auf dem Handy, 32px ab Tablet. Im Querformat mindestens
+ * so viel, dass nichts unter Notch oder Displayrundung verschwindet.
+ */
+@utility page-gutter {
+  padding-left: max(1.25rem, env(safe-area-inset-left));
+  padding-right: max(1.25rem, env(safe-area-inset-right));
+
+  @media (width >= 48rem) {
+    padding-left: max(2rem, env(safe-area-inset-left));
+    padding-right: max(2rem, env(safe-area-inset-right));
+  }
 }
 
 @layer base {
