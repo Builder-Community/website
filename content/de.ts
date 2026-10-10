@@ -28,7 +28,7 @@ export const de: Dictionary = {
     instagram: "Instagram ansehen",
   },
   teaser: {
-    title: "Eine neue Community startet in Augsburg.",
+    title: "Etwas Neues kommt nach Augsburg.",
     subline: "Für alle, die eine Idee zum Leben erwecken wollen.",
     follow: "Auf Instagram folgen",
     revealLabel: "Wir verraten alles am",

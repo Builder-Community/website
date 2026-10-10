@@ -48,8 +48,8 @@
   --text-button: 1.1875rem; /* 19px fett: gilt als große Schrift (Navy auf Orange, 4,3:1) */
   --text-button--line-height: 1.2;
   /* Überschrift im Teaser: eine Stufe kleiner als text-display, weil dort das
-     große Datum der Blickfang ist. „Eine neue Community / startet in Augsburg.“
-     passt so ab 360px in zwei Zeilen (ca. 28px auf dem Handy, bis 56px). */
+     große Datum der Blickfang ist. Passt so ab 360px in zwei Zeilen
+     (ca. 28px auf dem Handy, bis 56px). */
   --text-teaser-title: clamp(1.75rem, 0.95rem + 3.3vw, 3.5rem);
   --text-teaser-title--line-height: 1.05;
   --text-teaser-title--letter-spacing: -0.02em;

@@ -5,8 +5,10 @@ Neueste Einträge oben.
 
 ## 2026-10-10 · Teaser-Text
 
-- Überschrift „Eine neue Community startet in Augsburg.“ statt „Etwas startet in Augsburg.“ (Brief):
-  „Etwas“ war zu vage. Mehr wird im Teaser bewusst noch nicht verraten.
+- Überschrift „Etwas Neues kommt nach Augsburg.“ statt „Etwas startet in Augsburg.“ (Brief):
+  klingt natürlicher und hält die Neugier offen. Verworfen: „Eine neue Community startet in Augsburg.“,
+  weil es verrät, was es ist, und austauschbar klingt (es gibt viele Communities). Ein Teaser soll eine
+  Frage öffnen, die erst der 08.11. beantwortet.
 - „Wir verraten alles am“ steht klein über dem großen Datum. Ohne diese Zeile war unklar, dass am 08.11.
   nur die Enthüllung kommt und nicht schon das erste Treffen (28.11.).
 - Die Teaser-Überschrift ist eine Stufe kleiner als die H1 der Hauptseite (text-teaser-title). So steht
