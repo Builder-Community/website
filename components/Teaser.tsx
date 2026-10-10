@@ -23,20 +23,21 @@ export function Teaser({ t, legal, date, instagramUrl }: TeaserProps) {
             title="builder.community"
             className="w-28 animate-stamp text-orange"
           />
-          <h1 className="mt-8 text-display font-extrabold">{t.title}</h1>
+          <h1 className="mt-8 text-teaser-title font-extrabold">{t.title}</h1>
           <p className="mt-4 max-w-[26ch] text-lead text-balance text-cream/85">
             {t.subline}
           </p>
-          {/* Ein Satz für Screenreader: „Am 08.11. verraten wir’s.“ */}
-          <p className="mt-6 flex flex-col items-center">
-            <span className="sr-only">{t.datePrefix} </span>
+          {/* Ein Satz, auch für Screenreader: „Wir verraten alles am 08.11.“ */}
+          <p className="mt-7 flex flex-col items-center">
+            <span className="text-kicker font-semibold uppercase">
+              {t.revealLabel}
+            </span>{" "}
             <time
               dateTime={date.dateTime}
-              className="font-display text-teaser-date font-extrabold text-orange"
+              className="mt-2 font-display text-teaser-date font-extrabold text-orange"
             >
               {date.label}
-            </time>{" "}
-            <span className="mt-2 text-lead font-semibold">{t.reveal}</span>
+            </time>
           </p>
           <ButtonLink
             href={instagramUrl}

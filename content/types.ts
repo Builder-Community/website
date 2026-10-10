@@ -31,10 +31,8 @@ export type Dictionary = {
     title: string;
     subline: string;
     follow: string;
-    // „Am 08.11. verraten wir’s.“: „Am“ hören nur Screenreader, „verraten wir’s.“
-    // steht sichtbar unter dem großen Datum.
-    datePrefix: string;
-    reveal: string;
+    // Kleine Zeile über dem großen Datum: „Wir verraten alles am“ + „08.11.“
+    revealLabel: string;
   };
   legal: {
     // Name der Navigation für Screenreader

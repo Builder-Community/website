@@ -6,7 +6,8 @@ import "server-only";
 export const links = {
   whatsapp: "https://chat.whatsapp.com/K2uXIfxQP30FUi0H5tGD15",
   instagram: "https://www.instagram.com/augsburg.builders/",
-  // hallo@ ist eingerichtet. Empfehlung: hello@ zusätzlich anlegen und hier
-  // umstellen, sobald eine Testmail an hello@ angekommen ist.
-  email: "hallo@builder.community",
+  // Hauptadresse, passend zur englischen Marke. hallo@builder.community landet
+  // im selben Postfach. Hier ändern, und Impressum, Datenschutz und Kontakt
+  // ziehen automatisch mit.
+  email: "hello@builder.community",
 } as const;

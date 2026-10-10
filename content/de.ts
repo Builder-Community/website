@@ -28,11 +28,10 @@ export const de: Dictionary = {
     instagram: "Instagram ansehen",
   },
   teaser: {
-    title: "Etwas startet in Augsburg.",
+    title: "Eine neue Community startet in Augsburg.",
     subline: "Für alle, die eine Idee zum Leben erwecken wollen.",
     follow: "Auf Instagram folgen",
-    datePrefix: "Am",
-    reveal: "verraten wir’s.",
+    revealLabel: "Wir verraten alles am",
   },
   legal: {
     nav: "Rechtliches",
