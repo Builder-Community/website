@@ -5,8 +5,15 @@ import { defineConfig } from "vitest/config";
 // Deshalb reicht die Node-Umgebung, ohne jsdom oder Testing Library.
 export default defineConfig({
   resolve: {
-    // Gleicher Import-Alias wie in tsconfig.json: "@/lib/…" statt "../../lib/…"
-    alias: { "@": fileURLToPath(new URL("./", import.meta.url)) },
+    alias: {
+      // Gleicher Import-Alias wie in tsconfig.json: "@/lib/…" statt "../../lib/…"
+      "@": fileURLToPath(new URL("./", import.meta.url)),
+      // Dateien in content/ sind „server-only“ und würden außerhalb von Next.js
+      // abbrechen. In Tests ersetzen wir die Sperre durch eine leere Datei.
+      "server-only": fileURLToPath(
+        new URL("./node_modules/server-only/empty.js", import.meta.url),
+      ),
+    },
   },
   test: {
     include: ["**/*.test.ts"],
