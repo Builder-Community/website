@@ -26,7 +26,7 @@ type HomeViewProps = {
 // weder im HTML noch im JavaScript. Im Teaser ist so z. B. der WhatsApp-Link
 // noch nirgends zu finden.
 export function HomeView({ t, locale, state, meetup }: HomeViewProps) {
-  if (state === "placeholder") return <Placeholder />;
+  if (state === "placeholder") return <Placeholder legal={t.legal} />;
 
   if (state === "teaser") {
     return (

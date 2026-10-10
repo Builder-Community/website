@@ -6,5 +6,7 @@ import "server-only";
 export const links = {
   whatsapp: "https://chat.whatsapp.com/K2uXIfxQP30FUi0H5tGD15",
   instagram: "https://www.instagram.com/augsburg.builders/",
-  email: "hello@builder.community", // hello@ oder hallo@? Wartet auf Antwort von Johannes
+  // hallo@ ist eingerichtet. Empfehlung: hello@ zusätzlich anlegen und hier
+  // umstellen, sobald eine Testmail an hello@ angekommen ist.
+  email: "hallo@builder.community",
 } as const;

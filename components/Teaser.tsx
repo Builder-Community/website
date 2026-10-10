@@ -24,7 +24,7 @@ export function Teaser({ t, legal, date, instagramUrl }: TeaserProps) {
             className="w-28 animate-stamp text-orange"
           />
           <h1 className="mt-8 text-display font-extrabold">{t.title}</h1>
-          <p className="mt-4 max-w-[26ch] text-lead text-cream/85">
+          <p className="mt-4 max-w-[26ch] text-lead text-balance text-cream/85">
             {t.subline}
           </p>
           <p className="mt-6 font-display text-teaser-date font-extrabold text-orange">
