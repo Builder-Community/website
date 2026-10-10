@@ -47,6 +47,10 @@
   --text-kicker--letter-spacing: 0.14em;
   --text-button: 1.1875rem; /* 19px fett: gilt als große Schrift (Navy auf Orange, 4,3:1) */
   --text-button--line-height: 1.2;
+  /* Das große Datum im Teaser („08.11.“): ca. 104px auf dem Handy, bis 176px */
+  --text-teaser-date: clamp(6.5rem, 4rem + 9vw, 11rem);
+  --text-teaser-date--line-height: 0.9;
+  --text-teaser-date--letter-spacing: -0.03em;
 
   /* Ecken: einheitlich und klein. Es gibt nur diesen einen Radius (rounded-brand). */
   --radius-*: initial;
