@@ -1,40 +1,57 @@
 // Datums- und Zeitangaben für Menschen, immer in deutscher Zeit (Europe/Berlin).
-// Beispiele: „Sa, 28. November“ · „Sat, 28 November“ · „9–12 Uhr“ · „9 am–12 pm“
+// Beispiele: „Sa, 28. November“ · „08.11.“ · „15. November“ · „9–12 Uhr“
+//            „Sat, 28 November“ · „8 Nov“  · „15 November“  · „9 am–12 pm“
 
 export type Locale = "de" | "en";
 
-// Geschütztes Leerzeichen: hält z. B. „28. November“ und „9 Uhr“ in einer Zeile zusammen.
-export const NBSP = " ";
+// Geschütztes Leerzeichen (U+00A0): hält z. B. „28. November“ und „9 Uhr“ in
+// einer Zeile zusammen. Als Zeichencode geschrieben, weil es im Editor genauso
+// aussieht wie ein normales Leerzeichen.
+export const NBSP = String.fromCharCode(0xa0);
 
 const TIME_ZONE = "Europe/Berlin";
 
-// "2026-11-28" → „Sa, 28. November“ (de) bzw. „Sat, 28 November“ (en)
+// Kalendertag "2026-11-28" → „Sa, 28. November“ (de) bzw. „Sat, 28 November“ (en)
 export function formatMeetupDay(isoDate: string, locale: Locale): string {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) {
     throw new Error(`Datum muss im Format JJJJ-MM-TT sein: ${isoDate}`);
   }
   // Mittags UTC: So bleibt es in jeder Zeitzone derselbe Kalendertag.
-  const date = new Date(`${isoDate}T12:00:00Z`);
-  if (Number.isNaN(date.getTime())) {
-    throw new Error(`Ungültiges Datum: ${isoDate}`);
-  }
-
-  const parts = new Intl.DateTimeFormat(locale === "de" ? "de-DE" : "en-GB", {
-    timeZone: TIME_ZONE,
+  const parts = dateParts(`${isoDate}T12:00:00Z`, locale, {
     weekday: "short",
     day: "numeric",
     month: "long",
-  }).formatToParts(date);
-  const part = (type: Intl.DateTimeFormatPartTypes) =>
-    parts.find((p) => p.type === type)?.value ?? "";
-
-  const weekday = part("weekday").replace(/\.$/, ""); // „Sa.“ → „Sa“
-  const day = part("day");
-  const month = part("month");
+  });
+  const weekday = parts.weekday.replace(/\.$/, ""); // „Sa.“ → „Sa“
 
   return locale === "de"
-    ? `${weekday},${NBSP}${day}.${NBSP}${month}`
-    : `${weekday},${NBSP}${day}${NBSP}${month}`;
+    ? `${weekday},${NBSP}${parts.day}.${NBSP}${parts.month}`
+    : `${weekday},${NBSP}${parts.day}${NBSP}${parts.month}`;
+}
+
+// Zeitpunkt "2026-11-08T18:00:00+01:00" → „08.11.“ (de) bzw. „8 Nov“ (en)
+export function formatShortDate(instant: string, locale: Locale): string {
+  if (locale === "de") {
+    const { day, month } = dateParts(instant, locale, {
+      day: "2-digit",
+      month: "2-digit",
+    });
+    return `${day}.${month}.`;
+  }
+  const { day, month } = dateParts(instant, locale, {
+    day: "numeric",
+    month: "short",
+  });
+  return `${day}${NBSP}${month}`;
+}
+
+// Zeitpunkt "2026-11-15T18:00:00+01:00" → „15. November“ (de) bzw. „15 November“ (en)
+export function formatDayMonth(instant: string, locale: Locale): string {
+  const { day, month } = dateParts(instant, locale, {
+    day: "numeric",
+    month: "long",
+  });
+  return locale === "de" ? `${day}.${NBSP}${month}` : `${day}${NBSP}${month}`;
 }
 
 type TimeRange = { start: string; end: string };
@@ -49,6 +66,32 @@ export function formatTimeRange(
     return `${germanTime(from)}–${germanTime(to)}${NBSP}Uhr`;
   }
   return `${englishTime(from)}–${englishTime(to)}`;
+}
+
+// Nur eindeutige Zeitpunkte mit Zeitzone erlauben, z. B. "2026-11-08T18:00:00+01:00".
+// Vorsicht: JavaScript liest "08.11.2026" ohne Fehler als 11. August (US-Format).
+export const ISO_INSTANT =
+  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:\d{2})$/;
+
+// Zerlegt einen Zeitpunkt in Tag, Monat usw., wie man sie in Deutschland gerade sieht.
+function dateParts(
+  instant: string,
+  locale: Locale,
+  options: Intl.DateTimeFormatOptions,
+): Record<"weekday" | "day" | "month", string> {
+  const date = new Date(instant);
+  if (!ISO_INSTANT.test(instant) || Number.isNaN(date.getTime())) {
+    throw new Error(
+      `Zeitpunkt muss so aussehen: 2026-11-08T18:00:00+01:00 (war: ${instant})`,
+    );
+  }
+  const parts = new Intl.DateTimeFormat(locale === "de" ? "de-DE" : "en-GB", {
+    timeZone: TIME_ZONE,
+    ...options,
+  }).formatToParts(date);
+  const part = (type: Intl.DateTimeFormatPartTypes) =>
+    parts.find((p) => p.type === type)?.value ?? "";
+  return { weekday: part("weekday"), day: part("day"), month: part("month") };
 }
 
 type Time = { hours: number; minutes: number };

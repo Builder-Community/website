@@ -1,8 +1,19 @@
 import { describe, expect, test } from "vitest";
-import { formatMeetupDay, formatTimeRange, NBSP } from "./format";
+import {
+  formatDayMonth,
+  formatMeetupDay,
+  formatShortDate,
+  formatTimeRange,
+  NBSP,
+} from "./format";
 
 // In den erwarteten Texten steht „_“ für ein geschütztes Leerzeichen.
 const nbsp = (text: string) => text.replaceAll("_", NBSP);
+
+test("NBSP ist wirklich ein geschütztes Leerzeichen (U+00A0), kein normales", () => {
+  expect(NBSP.charCodeAt(0)).toBe(0xa0);
+  expect(NBSP).not.toBe(" ");
+});
 
 describe("formatMeetupDay", () => {
   test.each([
@@ -18,6 +29,25 @@ describe("formatMeetupDay", () => {
   test("lehnt falsche Formate ab, statt still Unsinn anzuzeigen", () => {
     expect(() => formatMeetupDay("28.11.2026", "de")).toThrow();
     expect(() => formatMeetupDay("2026-13-45", "de")).toThrow();
+  });
+});
+
+describe("formatShortDate und formatDayMonth", () => {
+  test.each([
+    [formatShortDate, "2026-11-08T18:00:00+01:00", "de", "08.11."],
+    [formatShortDate, "2026-11-08T18:00:00+01:00", "en", "8_Nov"],
+    [formatDayMonth, "2026-11-15T18:00:00+01:00", "de", "15._November"],
+    [formatDayMonth, "2026-11-15T18:00:00+01:00", "en", "15_November"],
+  ] as const)("%o(%s, %s) → %s", (format, instant, locale, expected) => {
+    expect(format(instant, locale)).toBe(nbsp(expected));
+  });
+
+  test("zählt in deutscher Zeit: 23:30 UTC am 07.11. ist in Deutschland schon der 08.11.", () => {
+    expect(formatShortDate("2026-11-07T23:30:00Z", "de")).toBe("08.11.");
+  });
+
+  test("lehnt ungültige Zeitpunkte ab", () => {
+    expect(() => formatShortDate("08.11.2026", "de")).toThrow();
   });
 });
 
