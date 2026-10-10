@@ -5,6 +5,7 @@ import {
   formatShortDate,
   formatTimeRange,
   NBSP,
+  SHY,
 } from "./format";
 
 // In den erwarteten Texten steht „_“ für ein geschütztes Leerzeichen.
@@ -13,6 +14,10 @@ const nbsp = (text: string) => text.replaceAll("_", NBSP);
 test("NBSP ist wirklich ein geschütztes Leerzeichen (U+00A0), kein normales", () => {
   expect(NBSP.charCodeAt(0)).toBe(0xa0);
   expect(NBSP).not.toBe(" ");
+});
+
+test("SHY ist ein weiches Trennzeichen (U+00AD)", () => {
+  expect(SHY.charCodeAt(0)).toBe(0xad);
 });
 
 describe("formatMeetupDay", () => {

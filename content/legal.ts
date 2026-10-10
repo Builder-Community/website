@@ -4,14 +4,17 @@ import { campaign } from "./campaign";
 // Angaben fürs Impressum nach § 5 DDG (Digitale-Dienste-Gesetz) und § 18 Abs. 2 MStV.
 // Umsetzungshilfe, keine Rechtsberatung. Die E-Mail-Adresse steht in links.ts.
 export const imprint = {
-  name: "", // Vor- und Nachname
-  street: "", // Straße Hausnummer
-  city: "", // PLZ Ort
+  name: "Johannes Brix",
+  street: "Karwendelstraße 10",
+  city: "82299 Türkenfeld",
+  country: "Deutschland",
 };
 
-// Die Datenschutzerklärung (aus dem Generator, Issue #4) steht in
-// app/(de)/datenschutz/page.tsx. Auf true setzen, sobald sie eingefügt ist.
-export const privacyPolicyReady = false;
+export const imprintNote =
+  "builder.community ist ein privates, nicht-kommerzielles Community-Projekt. Die Teilnahme an Side Project Saturday ist kostenlos.";
+
+// Die Datenschutzerklärung steht in content/privacy-policy.tsx.
+export const privacyPolicyReady = true;
 
 // Sicherheitsnetz: Ohne vollständiges Impressum und ohne Datenschutzerklärung
 // darf die Seite nicht öffentlich werden. Ist in campaign.ts ein Teaser-Termin

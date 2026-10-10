@@ -31,6 +31,8 @@ export const de: Dictionary = {
     title: "Etwas startet in Augsburg.",
     subline: "Für alle, die eine Idee zum Leben erwecken wollen.",
     follow: "Auf Instagram folgen",
+    datePrefix: "Am",
+    reveal: "verraten wir’s.",
   },
   legal: {
     nav: "Rechtliches",

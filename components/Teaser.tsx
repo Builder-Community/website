@@ -18,7 +18,7 @@ export function Teaser({ t, legal, date, instagramUrl }: TeaserProps) {
   return (
     <div className="flex min-h-svh flex-col surface-navy">
       <main id="inhalt" className="flex flex-1 flex-col">
-        <Container className="flex flex-1 flex-col items-center justify-center py-8 text-center">
+        <Container className="flex flex-1 flex-col items-center justify-center py-6 text-center">
           <BMark
             title="builder.community"
             className="w-28 animate-stamp text-orange"
@@ -27,8 +27,16 @@ export function Teaser({ t, legal, date, instagramUrl }: TeaserProps) {
           <p className="mt-4 max-w-[26ch] text-lead text-balance text-cream/85">
             {t.subline}
           </p>
-          <p className="mt-6 font-display text-teaser-date font-extrabold text-orange">
-            <time dateTime={date.dateTime}>{date.label}</time>
+          {/* Ein Satz für Screenreader: „Am 08.11. verraten wir’s.“ */}
+          <p className="mt-6 flex flex-col items-center">
+            <span className="sr-only">{t.datePrefix} </span>
+            <time
+              dateTime={date.dateTime}
+              className="font-display text-teaser-date font-extrabold text-orange"
+            >
+              {date.label}
+            </time>{" "}
+            <span className="mt-2 text-lead font-semibold">{t.reveal}</span>
           </p>
           <ButtonLink
             href={instagramUrl}

@@ -9,6 +9,10 @@ export type Locale = "de" | "en";
 // aussieht wie ein normales Leerzeichen.
 export const NBSP = String.fromCharCode(0xa0);
 
+// Weiches Trennzeichen (U+00AD): Ein langes Wort darf genau hier umbrechen,
+// aber nur, wenn es nicht in die Zeile passt. Beispiel: `Datenschutz${SHY}erklärung`.
+export const SHY = String.fromCharCode(0xad);
+
 const TIME_ZONE = "Europe/Berlin";
 
 // Kalendertag "2026-11-28" → „Sa, 28. November“ (de) bzw. „Sat, 28 November“ (en)
