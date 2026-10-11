@@ -15,10 +15,9 @@ import type { CampaignConfig } from "@/lib/state";
 export const campaign = {
   timeZone: "Europe/Berlin",
 
-  // Ab wann der Teaser die Platzhalterseite ersetzt. Erst eintragen, wenn
-  // Impressum und Datenschutz fertig sind (Issues #3 und #4),
-  // z. B. "2026-10-20T08:00:00+02:00". Bis dahin: null.
-  teaserAt: null,
+  // Ab wann der Teaser die Platzhalterseite ersetzt (null = Platzhalter bleibt).
+  // Geht nur, wenn Impressum und Datenschutz vollständig sind (content/legal.ts).
+  teaserAt: "2026-10-11T08:00:00+02:00",
 
   // Reel „Was ist Side Project Saturday?“: volle Seite, Ort noch geheim (vorläufig, Issue #6)
   launchAt: "2026-11-08T18:00:00+01:00",
