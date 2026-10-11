@@ -4,7 +4,9 @@ import { Container } from "./Container";
 
 type HeaderProps = {
   locale: Locale;
-  languageNav: string;
+  // Name der Sprachnavigation. Ohne ihn gibt es keinen Sprachumschalter,
+  // z. B. auf Impressum und Datenschutz (nur auf Deutsch).
+  languageNav?: string;
   // Stempel-Effekt fürs B beim Laden. Laut Brief nur im Teaser und im Hero,
   // also nur auf der Startseite einschalten.
   stamp?: boolean;
@@ -31,34 +33,38 @@ export function Header({ locale, languageNav, stamp = false }: HeaderProps) {
           </span>
         </a>
 
-        <nav aria-label={languageNav}>
-          <ul className="flex items-center text-sm font-semibold tracking-wide">
-            {languages.map((language, index) => {
-              const isCurrent = language.locale === locale;
-              return (
-                <li key={language.locale} className="flex items-center">
-                  {index > 0 && (
-                    <span aria-hidden="true" className="text-cream/30">
-                      /
-                    </span>
-                  )}
-                  <a
-                    href={language.href}
-                    hrefLang={language.locale}
-                    lang={language.locale}
-                    aria-label={language.name}
-                    aria-current={isCurrent ? "page" : undefined}
-                    className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-brand ${
-                      isCurrent ? "text-cream" : "text-cream/55 hover:text-sky"
-                    }`}
-                  >
-                    {language.label}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        {languageNav && (
+          <nav aria-label={languageNav}>
+            <ul className="flex items-center text-sm font-semibold tracking-wide">
+              {languages.map((language, index) => {
+                const isCurrent = language.locale === locale;
+                return (
+                  <li key={language.locale} className="flex items-center">
+                    {index > 0 && (
+                      <span aria-hidden="true" className="text-cream/30">
+                        /
+                      </span>
+                    )}
+                    <a
+                      href={language.href}
+                      hrefLang={language.locale}
+                      lang={language.locale}
+                      aria-label={language.name}
+                      aria-current={isCurrent ? "page" : undefined}
+                      className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-brand ${
+                        isCurrent
+                          ? "text-cream"
+                          : "text-cream/55 hover:text-sky"
+                      }`}
+                    >
+                      {language.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        )}
       </Container>
     </header>
   );

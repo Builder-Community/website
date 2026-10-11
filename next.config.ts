@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
 
+  // Zwischenspeicher-Profil für alles, was nach Datum umschaltet (Startseite,
+  // Titel, Linkvorschau). Genutzt mit cacheLife("campaign"):
+  // - revalidate 300: höchstens alle 5 Minuten neu erzeugen (wie im Brief)
+  // - expire 600:     nie eine Fassung zeigen, die älter als 10 Minuten ist,
+  //                   auch wenn lange niemand die Seite aufgerufen hat
+  // - stale 300:      so lange darf der Browser seine Kopie ohne Rückfrage nutzen
+  cacheLife: {
+    campaign: { stale: 300, revalidate: 300, expire: 600 },
+  },
+
   // Kein „X-Powered-By: Next.js“-Header: verrät unnötig Details über den Server.
   poweredByHeader: false,
 

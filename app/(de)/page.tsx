@@ -1,20 +1,34 @@
 import type { Metadata } from "next";
-import { BMark } from "@/components/BMark";
+import { cacheLife } from "next/cache";
+import { HomeView, homeMetadata } from "@/components/HomeView";
+import { campaign } from "@/content/campaign";
+import { de } from "@/content/de";
+import { getCampaignState, getNextMeetup } from "@/lib/state";
 
-// Platzhalter, bis der Teaser fertig ist. Verrät nichts und wird nicht indexiert.
-export const metadata: Metadata = {
-  robots: { index: false, follow: false },
-};
+// Die Startseite schaltet nach Datum von selbst um:
+// Platzhalter → Teaser → Launch → Ort → läuft (siehe lib/state.ts).
+//
+// "use cache" macht sie zu einer statischen Seite, die höchstens alle 5 Minuten
+// neu erzeugt wird (Profil „campaign“ in next.config.ts). Bei jeder Neuerzeugung
+// wird die aktuelle Zeit gelesen und der Zustand neu bestimmt. So schaltet die
+// Seite um, ohne dass jemand etwas veröffentlichen muss.
 
-export default function Page() {
+export async function generateMetadata(): Promise<Metadata> {
+  "use cache";
+  cacheLife("campaign");
+  return homeMetadata(de, "de", getCampaignState(new Date(), campaign));
+}
+
+export default async function HomePage() {
+  "use cache";
+  cacheLife("campaign");
+  const now = new Date();
   return (
-    <main className="grid min-h-svh place-items-center surface-navy px-5">
-      <div className="flex flex-col items-center gap-6">
-        <BMark className="w-24 animate-stamp text-orange" />
-        <h1 className="font-sans text-base tracking-wide text-cream/70">
-          builder.community
-        </h1>
-      </div>
-    </main>
+    <HomeView
+      t={de}
+      locale="de"
+      state={getCampaignState(now, campaign)}
+      meetup={getNextMeetup(now, campaign)}
+    />
   );
 }

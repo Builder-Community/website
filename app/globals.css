@@ -47,6 +47,16 @@
   --text-kicker--letter-spacing: 0.14em;
   --text-button: 1.1875rem; /* 19px fett: gilt als große Schrift (Navy auf Orange, 4,3:1) */
   --text-button--line-height: 1.2;
+  /* Überschrift im Teaser: eine Stufe kleiner als text-display, weil dort das
+     große Datum der Blickfang ist. Passt so ab 360px in zwei Zeilen
+     (ca. 28px auf dem Handy, bis 56px). */
+  --text-teaser-title: clamp(1.75rem, 0.95rem + 3.3vw, 3.5rem);
+  --text-teaser-title--line-height: 1.05;
+  --text-teaser-title--letter-spacing: -0.02em;
+  /* Das große Datum im Teaser („08.11.“): ca. 104px auf dem Handy, bis 176px */
+  --text-teaser-date: clamp(6.5rem, 4rem + 9vw, 11rem);
+  --text-teaser-date--line-height: 0.9;
+  --text-teaser-date--letter-spacing: -0.03em;
 
   /* Ecken: einheitlich und klein. Es gibt nur diesen einen Radius (rounded-brand). */
   --radius-*: initial;
@@ -96,6 +106,37 @@
   color: var(--color-navy);
   --link-color: var(--color-navy);
   --focus-color: var(--color-navy);
+}
+
+/* Fließtext auf Impressum und Datenschutz: schlicht, gut lesbar, mit Silbentrennung. */
+@utility legal-text {
+  hyphens: auto;
+
+  & h2 {
+    margin-top: 2.5rem;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-navy);
+    hyphens: manual;
+  }
+
+  & p,
+  & ul {
+    margin-top: 0.75rem;
+  }
+
+  & ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+
+  & a {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
 }
 
 /*

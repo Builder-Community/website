@@ -3,6 +3,31 @@
 Was wir festgelegt haben und wo wir bewusst vom [Brief](BRIEF.md) abweichen, jeweils mit Begründung.
 Neueste Einträge oben.
 
+## 2026-10-10 · Teaser-Text
+
+- Überschrift „Etwas Neues kommt nach Augsburg.“ statt „Etwas startet in Augsburg.“ (Brief):
+  klingt natürlicher und hält die Neugier offen. Verworfen: „Eine neue Community startet in Augsburg.“,
+  weil es verrät, was es ist, und austauschbar klingt (es gibt viele Communities). Ein Teaser soll eine
+  Frage öffnen, die erst der 08.11. beantwortet.
+- „Wir verraten alles am“ steht klein über dem großen Datum. Ohne diese Zeile war unklar, dass am 08.11.
+  nur die Enthüllung kommt und nicht schon das erste Treffen (28.11.).
+- Die Teaser-Überschrift ist eine Stufe kleiner als die H1 der Hauptseite (text-teaser-title). So steht
+  sie ab 360 px in zwei Zeilen, und der Teaser passt ohne Scrollen auf einen Bildschirm. Blickfang ist das
+  große orange Datum.
+
+## 2026-10-10 · Zustand „placeholder“ vor dem Teaser
+
+Neu gegenüber dem Brief: Bis in `content/campaign.ts` ein `teaserAt` steht, zeigt die Startseite eine ruhige
+Platzhalterseite. Der Teaser lässt sich nur freischalten, wenn Impressum und Datenschutz vollständig sind;
+sonst bricht der Build ab.
+
+## 2026-10-10 · GitHub-Organisation und E-Mail
+
+- Code liegt in der Organisation **Builder-Community** als Repo `website` (vorher im persönlichen Account
+  johannesbrix). Die Organisation gehört dem Account johannesbrix (Owner).
+- Kontaktadresse ist **hello@builder.community**, passend zur englischen Marke und zum Wachstum in weitere
+  Städte. hallo@builder.community landet im selben Postfach.
+
 ## 2026-10-09 · Hero: Variante A, Inhalt oben, so hoch wie der Inhalt
 
 Johannes' Vorgabe: so entscheiden, wie Steve Krug („Don't make me think“) es tun würde.
