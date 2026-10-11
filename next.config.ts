@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
 
   // Nur im Entwicklungsmodus: Das Handy im selben WLAN darf die Seite laden
   // (npm run dev:lan). Erlaubt sind lokale Netzwerkadressen wie 192.168.x.x;
-  // manche WLANs (auch das von Johannes) vergeben Adressen im Bereich 100.x.x.x.
+  // manche WLANs vergeben auch Adressen im Bereich 100.x.x.x.
   allowedDevOrigins: ["192.168.*.*", "10.*.*.*", "172.*.*.*", "100.*.*.*"],
 
   turbopack: {
