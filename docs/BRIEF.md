@@ -3,6 +3,10 @@
 **Für:** Claude Code · **Von:** Johannes · **Stand:** 9. Oktober 2026
 **Domain:** augsburg.builder.community · **Kontakt:** hello@builder.community
 
+> **Update 25. Oktober 2026:** Die Community startet in **München** statt Augsburg (Domain
+> munich.builder.community). Launch am 01.01.2027, erstes Treffen am 09.01.2027. Wo dieser Brief Augsburg
+> oder Novembertermine nennt, gilt [ENTSCHEIDUNGEN.md](ENTSCHEIDUNGEN.md).
+
 ---
 
 ## So arbeitest du mit diesem Brief

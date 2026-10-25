@@ -3,6 +3,20 @@
 Was wir festgelegt haben und wo wir bewusst vom [Brief](BRIEF.md) abweichen, jeweils mit Begründung.
 Neueste Einträge oben.
 
+## 2026-10-25 · Start in München statt Augsburg, Launch am 01.01.2027
+
+- Die Community startet in **München**. Neue Domain: **munich.builder.community**.
+  augsburg.builder.community leitet vorübergehend (307) dorthin weiter, damit bestehende Links weiter funktionieren
+  und Augsburg später wieder eine eigene Stadtseite bekommen kann.
+- Name auf der Seite: **Munich Builder Community**, englisch wie die Domain und wie „builder.community“ und
+  „Side Project Saturday“. Im deutschen Fließtext steht „München“ („Etwas Neues kommt nach München.“,
+  „München Innenstadt“).
+- Termine: Launch der Website am **Fr, 01.01.2027**, erstes Treffen am **Sa, 09.01.2027** (beides fest).
+  Uhrzeit des Launchs (18:00) und Ort-Drop (So, 03.01.2027, 18:00) sind vorläufig (#2).
+- Keine Ausfälle mehr eingetragen: Weihnachten und Neujahr liegen vor dem ersten Treffen (#3).
+- Der Brief bleibt als ursprüngliche Vorgabe unverändert. Wo er Augsburg oder Novembertermine nennt, gilt dieser
+  Eintrag.
+
 ## 2026-10-10 · Teaser-Text
 
 - Überschrift „Etwas Neues kommt nach Augsburg.“ statt „Etwas startet in Augsburg.“ (Brief):
