@@ -1,9 +1,9 @@
 # builder.community · Website
 
-Website von **Side Project Saturday**, dem wöchentlichen Treffen der Augsburg Builder Community:
-jeden Samstag von 9 bis 12 Uhr in einem Café in der Augsburger Innenstadt.
+Website von **Side Project Saturday**, dem wöchentlichen Treffen der Munich Builder Community:
+jeden Samstag von 9 bis 12 Uhr in einem Café in der Münchner Innenstadt.
 
-Produktion: [augsburg.builder.community](https://augsburg.builder.community) ·
+Produktion: [munich.builder.community](https://munich.builder.community) ·
 Anforderungen: [docs/BRIEF.md](docs/BRIEF.md) ·
 Entscheidungen und Abweichungen vom Brief: [docs/ENTSCHEIDUNGEN.md](docs/ENTSCHEIDUNGEN.md)
 
