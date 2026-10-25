@@ -4,7 +4,7 @@
 
 // placeholder → teaser → launch → venue → running
 //   placeholder: ruhige Platzhalterseite, bis der Teaser freigeschaltet ist
-//   teaser:      nur der Teaser („Etwas startet in Augsburg.“)
+//   teaser:      nur der Teaser („Etwas Neues kommt nach München.“)
 //   launch:      volle Seite, Ort „wird am … verraten“
 //   venue:       Ort sichtbar, bis das erste Treffen vorbei ist
 //   running:     danach; zeigt automatisch den nächsten Samstag
