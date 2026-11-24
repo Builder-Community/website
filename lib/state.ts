@@ -5,7 +5,8 @@
 // placeholder → teaser → launch → venue → running
 //   placeholder: ruhige Platzhalterseite, bis der Teaser freigeschaltet ist
 //   teaser:      nur der Teaser („Etwas Neues kommt nach München.“)
-//   launch:      volle Seite, Ort „wird am … verraten“
+//   launch:      volle Seite, Ort „wird am … verraten“; entfällt, wenn der Ort
+//                gleich zum Launch sichtbar ist (venueRevealAt = launchAt)
 //   venue:       Ort sichtbar, bis das erste Treffen vorbei ist
 //   running:     danach; zeigt automatisch den nächsten Samstag
 export type CampaignState =

@@ -68,7 +68,17 @@ describe("checkCampaign", () => {
   test("Reihenfolge: Ort-Drop vor dem Launch ist ein Fehler", () => {
     expect(
       problemsWith({ venueRevealAt: "2026-11-01T18:00:00+01:00" }),
-    ).toContain("launchAt muss vor venueRevealAt liegen");
+    ).toContain("venueRevealAt darf nicht vor launchAt liegen");
+  });
+
+  test("Ort gleich zum Launch (gleicher Zeitpunkt) ist erlaubt", () => {
+    expect(problemsWith({ venueRevealAt: valid.launchAt })).toBe("");
+  });
+
+  test("Teaser und Launch zum gleichen Zeitpunkt ist ein Fehler", () => {
+    expect(problemsWith({ teaserAt: valid.launchAt })).toContain(
+      "teaserAt muss vor launchAt liegen",
+    );
   });
 
   test("Ort-Drop nach Beginn des ersten Treffens ist ein Fehler", () => {

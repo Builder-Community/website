@@ -1,7 +1,7 @@
 # builder.community · Website
 
 Website von **Side Project Saturday**, dem wöchentlichen Treffen der Munich Builder Community:
-jeden Samstag von 9 bis 12 Uhr in einem Café in der Münchner Innenstadt.
+jeden Samstag von 10 bis 13 Uhr in einem Café in der Münchner Innenstadt.
 
 Produktion: [munich.builder.community](https://munich.builder.community) ·
 Anforderungen: [docs/BRIEF.md](docs/BRIEF.md) ·
