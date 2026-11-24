@@ -45,6 +45,13 @@ describe("getCampaignState: jeder Wechsel genau an seinem Zeitpunkt", () => {
     expect(getCampaignState(switchTime, config)).toBe(after);
   });
 
+  test("Ort gleich zum Launch: vom Teaser direkt zu venue, ohne launch", () => {
+    const sameTime = { ...config, venueRevealAt: config.launchAt };
+    const launch = new Date(config.launchAt);
+    expect(getCampaignState(oneMsBefore(launch), sameTime)).toBe("teaser");
+    expect(getCampaignState(launch, sameTime)).toBe("venue");
+  });
+
   test("erstes Treffen: Samstag 11:59 noch venue, ab 12:00 running", () => {
     expect(getCampaignState(berlin("2026-11-28 11:59"), config)).toBe("venue");
     expect(getCampaignState(berlin("2026-11-28 12:00"), config)).toBe(

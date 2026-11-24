@@ -90,22 +90,16 @@ export function checkCampaign(config: CampaignConfig): string[] {
     }
   }
 
-  // Reihenfolge: Teaser → Launch → Ort-Drop → erstes Treffen
+  // Reihenfolge: Teaser → Launch → Ort sichtbar → erstes Treffen
   if (problems.length === 0) {
-    const order: [string, string | null][] = [
-      ["teaserAt", config.teaserAt],
-      ["launchAt", config.launchAt],
-      ["venueRevealAt", config.venueRevealAt],
-    ];
-    const set = order.filter(
-      (entry): entry is [string, string] => entry[1] !== null,
-    );
-    for (let i = 1; i < set.length; i++) {
-      const [earlierName, earlier] = set[i - 1];
-      const [laterName, later] = set[i];
-      if (new Date(earlier) >= new Date(later)) {
-        problems.push(`${earlierName} muss vor ${laterName} liegen.`);
-      }
+    const launch = new Date(config.launchAt);
+    if (config.teaserAt !== null && new Date(config.teaserAt) >= launch) {
+      problems.push("teaserAt muss vor launchAt liegen.");
+    }
+    // Gleichzeitig ist erlaubt: Dann ist der Ort ab dem Launch sichtbar,
+    // ohne eigenen Ort-Drop.
+    if (new Date(config.venueRevealAt) < launch) {
+      problems.push("venueRevealAt darf nicht vor launchAt liegen.");
     }
     const reveal = localDateTime(
       new Date(config.venueRevealAt),
