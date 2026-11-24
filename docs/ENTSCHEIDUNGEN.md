@@ -3,6 +3,16 @@
 Was wir festgelegt haben und wo wir bewusst vom [Brief](BRIEF.md) abweichen, jeweils mit Begründung.
 Neueste Einträge oben.
 
+## 2026-11-24 · Samstags 10–13 Uhr, Launch um 12 Uhr mit Ort
+
+- Treffen jeden Samstag **10–13 Uhr** (vorher 9–12). Weiter drei Stunden, die FAQ „Muss ich die ganzen drei
+  Stunden bleiben?“ passt.
+- **Kein eigener Ort-Drop.** Am 01.01. um 12 Uhr kommt ein Ankündigungsvideo mit Ort und erstem Treffen. Wer dann
+  auf die Seite kommt, soll sofort wissen, wann und wo. Die Seite schaltet um 11:50 Uhr direkt vom Teaser auf die
+  volle Seite mit Ort (`venueRevealAt` = `launchAt`), der Zustand `launch` („Ort wird am … verraten“) entfällt.
+  Die Prüfung in `lib/campaign-check.ts` erlaubt dafür jetzt den gleichen Zeitpunkt.
+- Instagram vorher: Anfang Dezember ein Sneak-Peek-Post.
+
 ## 2026-11-24 · München, Launch am 01.01.2027, erstes Treffen am 16.01.2027
 
 - Die Community startet in **München**, Domain **munich.builder.community**. Brief, Texte und die älteren
@@ -11,7 +21,6 @@ Neueste Einträge oben.
   @munich.builders, „builder.community“ und „Side Project Saturday“. Im deutschen Fließtext steht „München“
   („Etwas Neues kommt nach München.“, „München Innenstadt“).
 - Termine: Launch der Website am **Fr, 01.01.2027**, erstes Treffen am **Sa, 16.01.2027** (beides fest).
-  Uhrzeit des Launchs (18:00) und Ort-Drop (So, 03.01.2027, 18:00) sind vorläufig (#2).
 - Keine Ausfälle eingetragen: Weihnachten und Neujahr liegen vor dem ersten Treffen.
 
 ## 2026-10-10 · Teaser-Text

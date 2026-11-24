@@ -16,7 +16,7 @@
 
 ## 1. Worum es geht
 
-builder.community ist eine Community für Menschen, die eigene Projekte umsetzen. Los geht es in München mit **Side Project Saturday**: Jeden Samstag von 9 bis 12 Uhr trifft man sich in einem Café in der Münchner Innenstadt, trinkt Kaffee, erzählt von seinen Projekten und arbeitet, wer mag, gemeinsam weiter.
+builder.community ist eine Community für Menschen, die eigene Projekte umsetzen. Los geht es in München mit **Side Project Saturday**: Jeden Samstag von 10 bis 13 Uhr trifft man sich in einem Café in der Münchner Innenstadt, trinkt Kaffee, erzählt von seinen Projekten und arbeitet, wer mag, gemeinsam weiter.
 
 - Nicht nur Tech: Apps genauso wie Run Clubs, Podcasts, Vereine oder Kunstprojekte.
 - Kostenlos, ohne Anmeldung.
@@ -37,14 +37,14 @@ Die Website folgt dem Instagram-Fahrplan und darf vor dem Launch nichts verraten
 
 | Wann | Instagram | Website-Zustand |
 |---|---|---|
-| bis zum Launch | Teaser-Post: „Am 01.01. verraten wir's." | `teaser` (live seit 11.10.2026) |
-| vor dem Launch | Reel gedreht, Posts für Launch und Ort-Drop vorgeplant | **komplette Seite fertig, alle Zustände getestet** |
-| Fr, 01.01.2027 | Reel: Was ist Side Project Saturday? | `launch`: volle Seite, Ort „wird am 03.01. verraten" |
-| So, 03.01.2027 | Ort-Drop | `venue`: Ort sichtbar |
+| seit 11.10.2026 | | `teaser`: „Wir verraten alles am 01.01.“ |
+| Anfang Dezember | Sneak-Peek-Post, ein paar Freunden folgen | `teaser` |
+| vor dem Launch | Ankündigungsvideo gedreht und für den 01.01. vorgeplant | **komplette Seite fertig, alle Zustände getestet** |
+| Fr, 01.01.2027, 12 Uhr | Ankündigungsvideo vor der Kamera, mit Ort und erstem Treffen: „Komm am 16.01. hierher.“ | ab 11:50 Uhr: volle Seite mit Ort (`venue`) |
 | bis zum ersten Treffen | Flyer verteilen | `venue` |
-| Sa, 16.01.2027 | Erstes Treffen | ab 16.01., 12 Uhr: `running`, zeigt automatisch den nächsten Samstag |
+| Sa, 16.01.2027 | Erstes Treffen, 10–13 Uhr | ab 13 Uhr: `running`, zeigt automatisch den nächsten Samstag |
 
-**Wichtig:** Fest stehen der Launch am **Fr, 01.01.2027** und das erste Treffen am **Sa, 16.01.2027**. Die Uhrzeit des Launchs und der Ort-Drop (03.01.) sind vorläufig und werden von Johannes noch angepasst. Deshalb jedes sichtbare Datum (z. B. „01.01.“ im Teaser, „Ort wird am … verraten“, OG-Bild) immer aus `content/campaign.ts` ableiten und nie hart in Texte oder Komponenten schreiben. Eine Terminänderung muss eine Ein-Zeilen-Änderung in `campaign.ts` sein.
+**Wichtig:** Fest stehen der Launch am **Fr, 01.01.2027 um 12 Uhr** (die Seite schaltet um 11:50 Uhr um) und das erste Treffen am **Sa, 16.01.2027, 10–13 Uhr**. Einen eigenen Ort-Drop gibt es nicht: Wer nach dem Video auf die Seite kommt, soll sofort wissen, wann und wo. Jedes sichtbare Datum (z. B. „01.01.“ im Teaser, OG-Bild) trotzdem immer aus `content/campaign.ts` ableiten und nie hart in Texte oder Komponenten schreiben. Eine Terminänderung muss eine Ein-Zeilen-Änderung in `campaign.ts` sein.
 
 **Deadlines:** Teaser live seit 11.10.2026. Die gesamte Seite inklusive aller Zustände fertig und auf echten Handys getestet rechtzeitig **vor dem Launch am 01.01.2027**.
 
@@ -55,23 +55,25 @@ Die Website folgt dem Instagram-Fahrplan und darf vor dem Launch nichts verraten
 - Alle Zeitpunkte stehen zentral in `content/campaign.ts`, mit Offset (im Winter gilt `+01:00`):
 
 ```ts
+const launchTime = "2027-01-01T11:50:00+01:00"; // 10 Minuten vor dem Ankündigungsvideo
+
 export const campaign = {
   timeZone: "Europe/Berlin",
-  launchAt: "2027-01-01T18:00:00+01:00",      // = Zeitpunkt des Reels (Uhrzeit offen, s. Abschnitt 12)
-  venueRevealAt: "2027-01-03T18:00:00+01:00", // = Zeitpunkt des Orts-Posts (offen)
+  launchAt: launchTime,
+  venueRevealAt: launchTime,                            // Ort gleich zum Launch, kein eigener Ort-Drop
   firstMeetup: "2027-01-16",
-  weekly: { weekday: 6, start: "09:00", end: "12:00" }, // 6 = Samstag
+  weekly: { weekday: 6, start: "10:00", end: "13:00" }, // 6 = Samstag
   skipDates: [],                                        // Ausfälle, z. B. "2027-03-27"
 };
 
 export const venue = {
-  name: "",     // spätestens bis zum Reveal eintragen
+  name: "",     // spätestens bis zum Launch eintragen
   address: "",
   mapsUrl: "",
 };
 ```
 
-- **Zustände:** `teaser` (vor `launchAt`) → `launch` (bis `venueRevealAt`) → `venue` (bis zum Ende des ersten Treffens) → `running` (danach: der nächste Samstag, der nicht in `skipDates` liegt; samstags vor 12 Uhr ist „heute" der nächste Termin).
+- **Zustände:** `teaser` (vor `launchAt`) → `launch` (bis `venueRevealAt`; entfällt, wenn beide gleich sind) → `venue` (bis zum Ende des ersten Treffens) → `running` (danach: der nächste Samstag, der nicht in `skipDates` liegt; samstags vor 13 Uhr ist „heute" der nächste Termin).
 - **Fallback:** Ist `venue.name` nach dem Reveal noch leer, steht dort „Ort folgt in Kürze". Nie ein leeres Feld.
 - **Vorschau-Route** `/vorschau/[zustand]` (`teaser`, `launch`, `venue`, `running`), damit alle Zustände vorab geprüft werden können. Nur lokal und in Vercel-Previews aktiv (`VERCEL_ENV !== "production"`), in Produktion 404 und `noindex`.
 - Ort und Termine kann Johannes unterwegs über github.com im Handy-Browser ändern. Ein Commit löst automatisch ein neues Deployment aus.
@@ -133,7 +135,7 @@ Johannes mag den Vibe und die Farbwirkung, findet die Seite aber zu überladen.
 - Maximal zwei Schriften. Kein Inter, kein Geist (zu generisch).
 - Das Font-Subset `latin` reicht (enthält ä, ö, ü, ß).
 - Schriftgrößen fließend mit `clamp()`: H1 auf dem Handy ca. 44–52 px, auf dem Desktop bis ca. 112 px.
-- Deutsche Typografie: „Anführungszeichen", Halbgeviertstrich bei Zeiträumen (9–12 Uhr), geschützte Leerzeichen (28.&nbsp;November, 9&nbsp;Uhr), `hyphens: auto` mit `lang="de"` nur im Fließtext, `text-wrap: balance` für Überschriften, `text-wrap: pretty` für Absätze.
+- Deutsche Typografie: „Anführungszeichen", Halbgeviertstrich bei Zeiträumen (10–13 Uhr), geschützte Leerzeichen (16.&nbsp;Januar, 10&nbsp;Uhr), `hyphens: auto` mit `lang="de"` nur im Fließtext, `text-wrap: balance` für Überschriften, `text-wrap: pretty` für Absätze.
 
 ### Layout, Rhythmus, Formen
 
@@ -189,7 +191,7 @@ Auf einem iPhone (390 × 844) muss ohne Scrollen sichtbar sein: Name, was es ist
 - Kleine Zeile darüber: Side Project Saturday
 - H1: Munich Builder Community
 - Lead: Einmal pro Woche treffen wir uns, um mit unseren eigenen Projekten München, Deutschland und die Welt ein Stück besser zu machen.
-- Fakten: Jeden Samstag · 9–12 Uhr · München Innenstadt
+- Fakten: Jeden Samstag · 10–13 Uhr · München Innenstadt
 - Termin-Hinweis je nach Zustand: „Erstes Treffen: Sa, 16. Januar" bzw. „Nächstes Treffen: Sa, 23. Januar"
 - Haupt-Button: WhatsApp-Community beitreten
 - Zweiter Link: Instagram ansehen →
@@ -205,14 +207,14 @@ Auf einem iPhone (390 × 844) muss ohne Scrollen sichtbar sein: Name, was es ist
 **3 · So läuft ein Samstag**
 Drei Schritte mit großen Ziffern 01 / 02 / 03:
 
-1. **Ankommen & Kaffee:** Ab 9 Uhr. Bestell dir was und setz dich dazu.
+1. **Ankommen & Kaffee:** Ab 10 Uhr. Bestell dir was und setz dich dazu.
 2. **Über Projekte reden:** Alle erzählen kurz, woran sie gerade arbeiten. Fragen, Feedback, Kontakte.
-3. **Gemeinsam weiterbauen:** Wer mag, bleibt und arbeitet am eigenen Projekt weiter, neben Leuten, die dasselbe tun. Bis 12 Uhr.
+3. **Gemeinsam weiterbauen:** Wer mag, bleibt und arbeitet am eigenen Projekt weiter, neben Leuten, die dasselbe tun. Bis 13 Uhr.
 
 **4 · Nächstes Treffen (Navy, Orange-Akzent)**
 
-- `launch`: Samstag, 16. Januar 2027 · 9–12 Uhr · Ort: wird am [Reveal-Datum] verraten. Dazu der Link „Folge uns auf Instagram, um es zuerst zu erfahren".
-- `venue`: Samstag, 16. Januar 2027 · 9–12 Uhr · [Café-Name], [Adresse] · „Route öffnen"
+- `launch` (nur bei eigenem Ort-Drop, aktuell nicht geplant): Samstag, 16. Januar 2027 · 10–13 Uhr · Ort: wird am [Reveal-Datum] verraten. Dazu der Link „Folge uns auf Instagram, um es zuerst zu erfahren".
+- `venue`: Samstag, 16. Januar 2027 · 10–13 Uhr · [Café-Name], [Adresse] · „Route öffnen"
 - `running`: nächster Samstag (automatisch berechnet), Ort aus `venue`, dazu die Zeile „Danach jeden Samstag".
 - Buttons: In Kalender speichern (`.ics`) · Google Kalender
 
@@ -248,7 +250,7 @@ B und builder.community · Instagram · hello@builder.community · Impressum · 
 Kleine Zeile: Gebaut an einem Samstag in München.
 
 **Mobile Leiste (dezent, optional)**
-Nach dem Hero erscheint eine schmale Leiste am unteren Rand: „Sa, 16.01. · 9 Uhr" und Button „Beitreten". Über dem Kontakt-Bereich blendet sie sich aus. Sie berücksichtigt `env(safe-area-inset-bottom)`. Wenn sie aufdringlich wirkt: weglassen.
+Nach dem Hero erscheint eine schmale Leiste am unteren Rand: „Sa, 16.01. · 10 Uhr" und Button „Beitreten". Über dem Kontakt-Bereich blendet sie sich aus. Sie berücksichtigt `env(safe-area-inset-bottom)`. Wenn sie aufdringlich wirkt: weglassen.
 
 ---
 
@@ -257,10 +259,10 @@ Nach dem Hero erscheint eine schmale Leiste am unteren Rand: „Sa, 16.01. · 9 
 Deutsch ist Standard (`/`), Englisch liegt unter `/en`. Beide Wörterbücher teilen sich einen TypeScript-Typ, damit fehlende Übersetzungen beim Build auffallen. `hreflang`-Links setzen, `lang`-Attribut pro Sprache, Datumsformat über `Intl.DateTimeFormat` mit Zeitzone `Europe/Berlin`. Impressum und Datenschutz gibt es nur auf Deutsch.
 
 - **Teaser:** Something is starting in Munich. · For everyone who wants to bring an idea to life. · 1 Jan · Follow on Instagram
-- **Hero:** Side Project Saturday · Munich Builder Community · Once a week, we meet up to make Munich, Germany and the world a little better with our own projects. · Every Saturday · 9 am–12 pm · Munich city centre · First meetup: Sat, 16 January / Next meetup: Sat, 23 January · Join the WhatsApp community · See Instagram →
+- **Hero:** Side Project Saturday · Munich Builder Community · Once a week, we meet up to make Munich, Germany and the world a little better with our own projects. · Every Saturday · 10 am–1 pm · Munich city centre · First meetup: Sat, 16 January / Next meetup: Sat, 23 January · Join the WhatsApp community · See Instagram →
 - **About:** Stronger together. · We build things we're excited about and create value for our future and our community. You don't need to know anything about code. All you need is the drive to bring an idea to life – you'll find the people who support you here. Because sharing ideas is what really moves them forward. · People build things like: App · Run club · Podcast · Startup · Art project · Club · Event series · something that doesn't have a name yet
-- **How a Saturday works:** 01 Arrive & grab a coffee: From 9 am. Order something and join the table. · 02 Talk about projects: Everyone shares briefly what they're working on. Questions, feedback, contacts. · 03 Keep building together: Stay and work on your own project next to people doing the same. Until 12.
-- **Next meetup:** Saturday, 16 January 2027 · 9 am–12 pm · Location: revealed on [reveal date] · Follow us to find out first · Open route · Every Saturday after that · Add to calendar · Google Calendar
+- **How a Saturday works:** 01 Arrive & grab a coffee: From 10 am. Order something and join the table. · 02 Talk about projects: Everyone shares briefly what they're working on. Questions, feedback, contacts. · 03 Keep building together: Stay and work on your own project next to people doing the same. Until 1 pm.
+- **Next meetup:** Saturday, 16 January 2027 · 10 am–1 pm · Location: revealed on [reveal date] · Follow us to find out first · Open route · Every Saturday after that · Add to calendar · Google Calendar
 - **Quote:** "If one advances confidently in the direction of his dreams, and endeavors to live the life which he has imagined, he will meet with a success unexpected in common hours." — Henry David Thoreau, *Walden* (1854)
 - **FAQ:**
   - Do I need to bring anything? Just an open mind for other people's ideas and the will to be inspired. If you want to work on your project, bring a laptop or notebook.
@@ -282,8 +284,8 @@ Deutsch ist Standard (`/`), Englisch liegt unter `/en`. Beide Wörterbücher tei
 - Hero mit `100svh` statt `100vh`, damit nichts springt, wenn die Browserleiste ein- und ausfährt.
 - Tippflächen mindestens 44 × 44 px, kein horizontales Scrollen, Test ab 360 px Breite.
 - Sichtbare Fokus-Ringe (sky), Skip-Link „Zum Inhalt springen", genau eine H1 pro Seite.
-- **Meta:** Titel „Side Project Saturday · Munich Builder Community", Beschreibung „Jeden Samstag 9–12 Uhr in der Münchner Innenstadt: Kaffee, Austausch und Zeit für eigene Projekte. Kostenlos, ohne Anmeldung." Im Teaser: „Munich Builder Community · 01.01." und „Etwas startet in München." Jeweils auch auf Englisch.
-- **Link-Vorschau:** OG-Bild 1200 × 630 mit `next/og` im Branding (Navy, B, „Side Project Saturday · München · Samstags 9–12 Uhr"), im Teaser eine eigene Version mit „01.01.". Das OG-Bild muss mit dem Zustand wechseln.
+- **Meta:** Titel „Side Project Saturday · Munich Builder Community", Beschreibung „Jeden Samstag 10–13 Uhr in der Münchner Innenstadt: Kaffee, Austausch und Zeit für eigene Projekte. Kostenlos, ohne Anmeldung." Im Teaser: „Munich Builder Community · 01.01." und „Etwas startet in München." Jeweils auch auf Englisch.
+- **Link-Vorschau:** OG-Bild 1200 × 630 mit `next/og` im Branding (Navy, B, „Side Project Saturday · München · Samstags 10–13 Uhr"), im Teaser eine eigene Version mit „01.01.". Das OG-Bild muss mit dem Zustand wechseln.
 - **Kalender:** Route `/termin.ics` für das nächste Treffen (Zeiten in UTC, stabile UID, Ort sobald bekannt), dazu ein Google-Kalender-Link.
 - **Strukturierte Daten:** JSON-LD `Event` für das nächste Treffen, sobald der Ort bekannt ist (`isAccessibleForFree: true`, `eventAttendanceMode: OfflineEventAttendanceMode`).
 - **Icons:** `app/icon.svg`, `app/apple-icon.png`, `app/favicon.ico` und ein Manifest mit den maskable Icons. Alle Dateien liegen bei (siehe Abschnitt 10).
@@ -336,7 +338,7 @@ design/inspiration/             Screenshots von Johannes
 - `png/icon-192-maskable.png`, `png/icon-512-maskable.png` → Manifest
 - Das B ist aus dem handgezeichneten Original vektorisiert. Bitte nicht nachzeichnen oder „glätten", die Unregelmäßigkeit ist gewollt.
 
-**Tests für `lib/state.ts`** (mindestens): jeder Zustandswechsel genau an seinem Zeitpunkt, Samstag 11:59 vs. 12:01, übersprungene Termine in `skipDates`, Jahreswechsel, Sommer-/Winterzeit.
+**Tests für `lib/state.ts`** (mindestens): jeder Zustandswechsel genau an seinem Zeitpunkt, kurz vor und kurz nach Ende eines Treffens (z. B. 12:59 vs. 13:01), übersprungene Termine in `skipDates`, Jahreswechsel, Sommer-/Winterzeit.
 
 ---
 
@@ -363,8 +365,8 @@ design/inspiration/             Screenshots von Johannes
 2. Link zur WhatsApp-Community (bis dahin Platzhalter)
 3. Impressum: eigene Adresse oder Adressdienst?
 4. Bei welchem Anbieter liegt builder.community (für DNS)?
-5. Genaue Termine und Uhrzeiten von Teaser, Launch-Post und Ort-Drop (das sind die Umschaltzeitpunkte; der Launch am 01.01. steht fest, Uhrzeit und Ort-Drop am 03.01. sind vorläufig, jeweils 18:00 Uhr)
-6. Ort: spätestens vor dem Ort-Drop eintragen (aktuell noch offen)
+5. Umschaltzeitpunkte: erledigt. Launch am 01.01. um 12 Uhr (Seite schaltet um 11:50 Uhr um), Ort gleich zum Launch, kein eigener Ort-Drop
+6. Ort: spätestens bis zum Launch eintragen (aktuell noch offen)
 7. Ausfälle: bisher keine (Weihnachten und Neujahr liegen vor dem ersten Treffen)
 8. Optional: handgezeichnete Akzente, Fotos ab dem ersten Treffen
 
