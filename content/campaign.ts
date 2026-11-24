@@ -27,7 +27,7 @@ export const campaign = {
   venueRevealAt: "2027-01-03T18:00:00+01:00",
 
   // Erstes Treffen (fest)
-  firstMeetup: "2027-01-09",
+  firstMeetup: "2027-01-16",
 
   // Jeden Samstag (6) von 9 bis 12 Uhr. Wochentage: 0 = Sonntag … 6 = Samstag
   weekly: { weekday: 6, start: "09:00", end: "12:00" },
