@@ -5,7 +5,7 @@ import "server-only";
 // Sie dienen nur der Statistik und werden für den Link nicht gebraucht.
 export const links = {
   whatsapp: "https://chat.whatsapp.com/K2uXIfxQP30FUi0H5tGD15",
-  instagram: "https://www.instagram.com/augsburg.builders/",
+  instagram: "https://www.instagram.com/munich.builders/",
   // Hauptadresse, passend zur englischen Marke. hallo@builder.community landet
   // im selben Postfach. Hier ändern, und Impressum, Datenschutz und Kontakt
   // ziehen automatisch mit.

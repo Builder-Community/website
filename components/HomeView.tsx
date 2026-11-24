@@ -66,7 +66,7 @@ export function HomeView({ t, locale, state, meetup }: HomeViewProps) {
 }
 
 // Seitentitel und Beschreibung je Zustand. Im Teaser z. B.
-// „Augsburg Builder Community · 08.11.“ und „Etwas startet in Augsburg.“
+// „Munich Builder Community · 01.01.“ und „Etwas startet in München.“
 export function homeMetadata(
   t: Dictionary,
   locale: Locale,
