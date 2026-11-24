@@ -3,28 +3,25 @@
 Was wir festgelegt haben und wo wir bewusst vom [Brief](BRIEF.md) abweichen, jeweils mit Begründung.
 Neueste Einträge oben.
 
-## 2026-10-25 · Start in München statt Augsburg, Launch am 01.01.2027
+## 2026-11-24 · München, Launch am 01.01.2027, erstes Treffen am 16.01.2027
 
-- Die Community startet in **München**. Neue Domain: **munich.builder.community**.
-  augsburg.builder.community leitet vorübergehend (307) dorthin weiter, damit bestehende Links weiter funktionieren
-  und Augsburg später wieder eine eigene Stadtseite bekommen kann.
-- Name auf der Seite: **Munich Builder Community**, englisch wie die Domain und wie „builder.community“ und
-  „Side Project Saturday“. Im deutschen Fließtext steht „München“ („Etwas Neues kommt nach München.“,
-  „München Innenstadt“).
-- Termine: Launch der Website am **Fr, 01.01.2027**, erstes Treffen am **Sa, 09.01.2027** (beides fest).
+- Die Community startet in **München**, Domain **munich.builder.community**. Brief, Texte und die älteren
+  Einträge in diesem Log sind auf München umgestellt; die Entscheidungen selbst gelten unverändert.
+- Name auf der Seite: **Munich Builder Community**, englisch wie die Domain, der Instagram-Account
+  @munich.builders, „builder.community“ und „Side Project Saturday“. Im deutschen Fließtext steht „München“
+  („Etwas Neues kommt nach München.“, „München Innenstadt“).
+- Termine: Launch der Website am **Fr, 01.01.2027**, erstes Treffen am **Sa, 16.01.2027** (beides fest).
   Uhrzeit des Launchs (18:00) und Ort-Drop (So, 03.01.2027, 18:00) sind vorläufig (#2).
-- Keine Ausfälle mehr eingetragen: Weihnachten und Neujahr liegen vor dem ersten Treffen (#3).
-- Der Brief bleibt als ursprüngliche Vorgabe unverändert. Wo er Augsburg oder Novembertermine nennt, gilt dieser
-  Eintrag.
+- Keine Ausfälle eingetragen: Weihnachten und Neujahr liegen vor dem ersten Treffen.
 
 ## 2026-10-10 · Teaser-Text
 
-- Überschrift „Etwas Neues kommt nach Augsburg.“ statt „Etwas startet in Augsburg.“ (Brief):
-  klingt natürlicher und hält die Neugier offen. Verworfen: „Eine neue Community startet in Augsburg.“,
+- Überschrift „Etwas Neues kommt nach München.“ statt „Etwas startet in München.“ (Brief):
+  klingt natürlicher und hält die Neugier offen. Verworfen: „Eine neue Community startet in München.“,
   weil es verrät, was es ist, und austauschbar klingt (es gibt viele Communities). Ein Teaser soll eine
-  Frage öffnen, die erst der 08.11. beantwortet.
-- „Wir verraten alles am“ steht klein über dem großen Datum. Ohne diese Zeile war unklar, dass am 08.11.
-  nur die Enthüllung kommt und nicht schon das erste Treffen (28.11.).
+  Frage öffnen, die erst der Launch beantwortet.
+- „Wir verraten alles am“ steht klein über dem großen Datum. Ohne diese Zeile war unklar, dass am Launch-Tag
+  nur die Enthüllung kommt und nicht schon das erste Treffen.
 - Die Teaser-Überschrift ist eine Stufe kleiner als die H1 der Hauptseite (text-teaser-title). So steht
   sie ab 360 px in zwei Zeilen, und der Teaser passt ohne Scrollen auf einen Bildschirm. Blickfang ist das
   große orange Datum.
@@ -65,7 +62,7 @@ Im direkten Vergleich mit Schibsted Grotesk dynamischer und charakterstärker; p
 
 ## 2026-10-09 · Wann und Wo als kleine Tabelle
 
-Statt „Jeden Samstag · 9–12 Uhr · Augsburg Innenstadt“ als Zeile: zwei Spalten mit Beschriftung (WANN, WO)
+Statt „Jeden Samstag · 9–12 Uhr · München Innenstadt“ als Zeile: zwei Spalten mit Beschriftung (WANN, WO)
 und darunter das erste bzw. nächste Treffen. Schneller zu erfassen, Inhalt unverändert.
 
 ## 2026-10-09 · Button passt ab 360 px in eine Zeile
@@ -93,7 +90,7 @@ Umschreib-Regeln gebraucht, damit Deutsch ohne `/de` unter `/` erreichbar bleibt
 
 ## 2026-10-09 · Reihenfolge: Teaser vorgezogen, Domain zum Start
 
-Der Teaser muss bis ca. 20.10. live sein; im Brief kam die Domain erst in Etappe 9. Fahrplan: Issue #10.
+Der Teaser muss bis ca. 20.10. live sein; im Brief kam die Domain erst in Etappe 9. Fahrplan: Issue #6.
 
 ## 2026-10-09 · Projektordner außerhalb von OneDrive
 

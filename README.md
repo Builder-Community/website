@@ -49,7 +49,7 @@ components/       Bausteine der Seite: Header, Hero, Buttons, BMark (das B) …
 content/          alle Texte, Termine und Links (nur auf dem Server lesbar)
 lib/              Logik ohne Oberfläche, mit Tests daneben (*.test.ts)
 public/brand/     Logo-Dateien
-design/review/    Screenshots der Design-Entscheidungen
+design/review/    Screenshots des aktuellen Stands auf dem Handy (390 px)
 docs/             Brief und Entscheidungslog
 ```
 
