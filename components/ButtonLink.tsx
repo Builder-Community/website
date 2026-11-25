@@ -17,7 +17,9 @@ const tones = {
 // Button als Link: Navy-Schrift, fett und 19px groß. Auf Orange gilt der
 // Kontrast von 4,3:1 erst so als ausreichend (große Schrift); auf Creme sind es 12,7:1.
 // Leicht engere Laufweite und knapper Innenabstand: So passt
-// „WhatsApp-Community beitreten“ auch bei 360px Bildschirmbreite in eine Zeile.
+// „WhatsApp-Community beitreten“ auch bei 360px Bildschirmbreite in eine Zeile
+// (gemessen mit DM Sans: 305 px Text, 312 px Platz). Der Button ist immer so
+// breit wie die Seite, der Text steht mittig: Den kleinen Seitenabstand sieht man nicht.
 // Hover: Farbwechsel. Beim Antippen wird er kurz minimal kleiner.
 export function ButtonLink({
   href,
@@ -28,7 +30,7 @@ export function ButtonLink({
   return (
     <a
       href={href}
-      className={`inline-flex min-h-14 items-center justify-center rounded-brand px-2 py-3 text-center text-button font-bold tracking-[-0.01em] text-navy transition duration-150 ease-out active:scale-[0.98] ${tones[tone]} ${className}`}
+      className={`inline-flex min-h-14 items-center justify-center rounded-brand px-1 py-3 text-center text-button font-bold tracking-[-0.01em] text-navy transition duration-150 ease-out active:scale-[0.98] ${tones[tone]} ${className}`}
     >
       {children}
     </a>

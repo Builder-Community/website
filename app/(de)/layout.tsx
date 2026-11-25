@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import { colors } from "@/lib/brand";
 import "../globals.css";
 
@@ -18,10 +18,13 @@ const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
 });
 
-// Fließtext
-const instrumentSans = Instrument_Sans({
+// Fließtext. DM Sans gibt es auch in Canva, so nutzen Website und
+// Social-Media-Grafiken dieselben zwei Schriften. Auch hier passt „opsz“ die
+// Form an die Größe an: Kleine Schrift wird etwas offener und besser lesbar.
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-instrument",
+  axes: ["opsz"],
+  variable: "--font-dm-sans",
 });
 
 export const metadata: Metadata = {
@@ -40,10 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     // Die Font-Klassen gehören an <html>, damit ihre CSS-Variablen dort liegen,
     // wo Tailwind sie liest (:root). Siehe app/globals.css.
-    <html
-      lang="de"
-      className={`${bricolage.variable} ${instrumentSans.variable}`}
-    >
+    <html lang="de" className={`${bricolage.variable} ${dmSans.variable}`}>
       <body>{children}</body>
     </html>
   );

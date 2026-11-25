@@ -23,11 +23,11 @@
 
   /*
    * Schriften
-   * Die Variablen --font-bricolage und --font-instrument setzt next/font
+   * Die Variablen --font-bricolage und --font-dm-sans setzt next/font
    * im Root-Layout auf <html> (= :root). Nur deshalb funktioniert var() hier.
    */
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 
   /*
    * Schriftgrößen, fließend zwischen Handy (390px) und Desktop (1440px).
