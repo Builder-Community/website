@@ -131,7 +131,7 @@ Johannes mag den Vibe und die Farbwirkung, findet die Seite aber zu überladen.
 ### Typografie
 
 - **Überschriften:** Bricolage Grotesque (variabel), fett (700–800), Laufweite leicht eng (−0.02em). Charakterstark und passend zum handgezeichneten B. Zum Vergleich einmal mit Schibsted Grotesk testen (nüchterner) und Johannes beide Varianten auf dem Handy zeigen.
-- **Fließtext:** Instrument Sans, 17–18 px auf dem Handy, Zeilenhöhe ca. 1,55, Zeilenlänge maximal ca. 62 Zeichen.
+- **Fließtext:** DM Sans (gibt es auch in Canva, siehe Entscheidungslog), 17–18 px auf dem Handy, Zeilenhöhe ca. 1,55, Zeilenlänge maximal ca. 62 Zeichen.
 - Maximal zwei Schriften. Kein Inter, kein Geist (zu generisch).
 - Das Font-Subset `latin` reicht (enthält ä, ö, ü, ß).
 - Schriftgrößen fließend mit `clamp()`: H1 auf dem Handy ca. 44–52 px, auf dem Desktop bis ca. 112 px.
