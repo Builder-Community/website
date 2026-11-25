@@ -3,6 +3,15 @@
 Was wir festgelegt haben und wo wir bewusst vom [Brief](BRIEF.md) abweichen, jeweils mit Begründung.
 Neueste Einträge oben.
 
+## 2026-11-25 · Textschrift DM Sans statt Instrument Sans
+
+- Die Textschrift ist jetzt **DM Sans**. Instrument Sans gibt es in Canva nicht, DM Sans schon. So nutzen Website
+  und Social-Media-Grafiken dieselben zwei Schriften: Bricolage Grotesque für Überschriften, DM Sans für Text.
+  Beide sind frei (SIL Open Font License) und werden auf der Website weiter selbst gehostet.
+- DM Sans läuft etwas breiter: „WhatsApp-Community beitreten“ braucht bei 19 px fett 305 px. Der Button hat deshalb
+  4 statt 8 px seitlichen Innenabstand (312 px Platz bei 360 px Bildschirmbreite). Das sieht man nicht, weil der
+  Button immer die volle Breite hat und der Text mittig steht.
+
 ## 2026-11-24 · Samstags 10–13 Uhr, Launch um 12 Uhr mit Ort
 
 - Treffen jeden Samstag **10–13 Uhr** (vorher 9–12). Weiter drei Stunden, die FAQ „Muss ich die ganzen drei
